@@ -10,10 +10,6 @@ public class Main {
             inputStream = new FileInputStream(new File("./txt/file1.txt"));
             outputStream = new FileOutputStream(new File("./txt/file2.txt"));
 
-            File lol = new File("./txt/file2.txt");
-            if (!lol.exists()){
-                lol.createNewFile();
-            }
 
             int lenght;
             byte [] buffer = new byte[1024];
@@ -26,7 +22,7 @@ public class Main {
 
 
         } catch (IOException e) {
-            System.err.println("File ko tồn tại");;
+            System.err.println("File ko tồn tại");
         }finally {
             inputStream.close();
             outputStream.close();
