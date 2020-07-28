@@ -1,31 +1,23 @@
 import java.io.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        InputStream inputStream = null;
-        OutputStream outputStream = null;
-
+    public static void main(String[] args) {
 
         try {
-            inputStream = new FileInputStream(new File("./txt/file1.txt"));
-            outputStream = new FileOutputStream(new File("./txt/file2.txt"));
+            File file1 = new File("./txt/file1.txt");
+            File file2 = new File("./txt/file2.txt");
+            FileReader lol = new FileReader(file1);
+            FileWriter coc = new FileWriter(file2);
 
-
-            int lenght;
-            byte [] buffer = new byte[1024];
-
-            while ((lenght = inputStream.read(buffer))>0){
-                outputStream.write(buffer,0, lenght);
+            int line;
+            while ((line=lol.read())!=-1){
+                coc.write(line);
             }
-
-            System.out.println("Đã copy xong");
-
-
-        } catch (IOException e) {
-            System.err.println("File ko tồn tại");
-        }finally {
-            inputStream.close();
-            outputStream.close();
+            lol.close();
+            coc.close();
+        }catch (IOException e){
+            System.out.println(e.fillInStackTrace());
         }
+
     }
 }
